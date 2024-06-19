@@ -17,11 +17,16 @@ public class TablaNumero extends HttpServlet {
 		response.setContentType("text/html");
 		try (PrintWriter out=response.getWriter()){
 			RequestDispatcher dispatcher;
-			if (Integer.parseInt(request.getParameter("numero").in)) {
-				dispatcher=request.getRequestDispatcher("error.jps");
-			}else {
+			try {
+				
+				int number=Integer.parseInt(request.getParameter("numero"));
 				dispatcher=request.getRequestDispatcher("tabla.jps");
-			}
+				
+			} catch (NumberFormatException e ) {
+				dispatcher=request.getRequestDispatcher("error.jps");
+	        } catch (NullPointerException e) {
+	        	dispatcher=request.getRequestDispatcher("error.jps");
+	        }
 			 	
 			
 			out.println("<br>");
