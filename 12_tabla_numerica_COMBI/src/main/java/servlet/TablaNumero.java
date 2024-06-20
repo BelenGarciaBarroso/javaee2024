@@ -11,21 +11,22 @@ import java.io.PrintWriter;
 
 @WebServlet ("/TablaNumero")
 public class TablaNumero extends HttpServlet {
-	private static final long serialVersionUID = 1L;
+	
 
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		response.setContentType("text/html");
+		
 		try (PrintWriter out=response.getWriter()){
-			RequestDispatcher dispatcher;
+		
 			try {
 				
-				int number=Integer.parseInt(request.getParameter("numero"));
-				dispatcher=request.getRequestDispatcher("tabla.jps");
+				Integer.parseInt(request.getParameter("numero"));
+				request.getRequestDispatcher("tabla.jsp").forward(request, response);
 				
 			} catch (NumberFormatException e ) {
-				dispatcher=request.getRequestDispatcher("error.jps");
+				request.getRequestDispatcher("error.jsp").forward(request, response);
 	        } catch (NullPointerException e) {
-	        	dispatcher=request.getRequestDispatcher("error.jps");
+	        	request.getRequestDispatcher("error.jsp").forward(request, response);
+	        			
 	        }
 			 	
 			
