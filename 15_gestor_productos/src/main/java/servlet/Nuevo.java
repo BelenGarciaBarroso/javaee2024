@@ -18,9 +18,9 @@ public class Nuevo extends HttpServlet {
 		String categoria=request.getParameter("categoria");
 		Producto producto=new Producto (nombre,precio,categoria);
 		if(service.grabar(producto)) {
-			request.getRequestDispatcher("mensajeSi.jsp");
+			request.getRequestDispatcher("mensajeSi.jsp").forward(request, response);
 		}else {
-			request.getRequestDispatcher("mensajeNo.jsp");
+			request.getRequestDispatcher("mensajeNo.jsp").forward(request, response);
 		};
 		
 	}
