@@ -3,13 +3,6 @@
 <!DOCTYPE html>
 <html>
 <head>
-<!-- las siguientes etiquetas meta sirven para que el navegador
-	no cachee la página
-	-->
-	<meta http-equiv="Expires" content="0">
-	<meta http-equiv="Last-Modified" content="0">
-	<meta http-equiv="Cache-Control" content="no-cache, mustrevalidate">
-	<meta http-equiv="Pragma" content="no-cache"> 
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
