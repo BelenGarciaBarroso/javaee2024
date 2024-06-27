@@ -1,6 +1,5 @@
 package model;
 
-
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -12,59 +11,46 @@ import jakarta.persistence.Table;
 @Table(name="resultados")
 public class Resultado {
 	@Id
-	@GeneratedValue (strategy = GenerationType.IDENTITY)
-	private int idResultado; //primaryKey
-	@Column (name="url") // Se pone cuando el atributo se llama diferente al de la bbdd.
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private int idResultado;
+	@Column(name = "url")
 	private String url;
-	@Column (name="tematica")
-	private String categoria;
+	private String tematica;
 	private String descripcion;
-	
-	public Resultado(int idResultado, String url, String categoria, String descripcion) {
+	public Resultado(int idResultado, String url, String tematica, String descripcion) {
 		super();
 		this.idResultado = idResultado;
 		this.url = url;
-		this.categoria = categoria;
+		this.tematica = tematica;
 		this.descripcion = descripcion;
 	}
-
 	public Resultado() {
 		super();
 	}
-
 	public int getIdResultado() {
 		return idResultado;
 	}
-
 	public void setIdResultado(int idResultado) {
 		this.idResultado = idResultado;
 	}
-
 	public String getUrl() {
 		return url;
 	}
-
 	public void setUrl(String url) {
 		this.url = url;
 	}
-
-	public String getCategoria() {
-		return categoria;
+	public String getTematica() {
+		return tematica;
 	}
-
-	public void setCategoria(String categoria) {
-		this.categoria = categoria;
+	public void setTematica(String tematica) {
+		this.tematica = tematica;
 	}
-
 	public String getDescripcion() {
 		return descripcion;
 	}
-
 	public void setDescripcion(String descripcion) {
 		this.descripcion = descripcion;
 	}
 	
 	
 }
-	
-	

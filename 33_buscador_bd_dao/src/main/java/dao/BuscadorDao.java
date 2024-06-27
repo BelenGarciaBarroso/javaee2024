@@ -1,4 +1,4 @@
-package service;
+package dao;
 
 import java.util.List;
 
@@ -9,17 +9,15 @@ import jakarta.persistence.Persistence;
 import jakarta.persistence.TypedQuery;
 import model.Resultado;
 
-public class BuscadorService {
-	
-	
+public class BuscadorDao {
 	private EntityManager eManager;
 	
-	public BuscadorService() {
+	public BuscadorDao() {
 		EntityManagerFactory factory=Persistence.createEntityManagerFactory("buscador");
 		eManager=factory.createEntityManager();
 	}
 	
-	public void altaResultado (Resultado resultado) {
+	public void save(Resultado resultado) {
 		EntityTransaction tx=eManager.getTransaction();
 		tx.begin();
 		try {
@@ -30,27 +28,33 @@ public class BuscadorService {
 		}
 	}
 	
-	public Resultado buscarResultadoPorId (int idResultado) {
-		return eManager.find(Resultado.class, idResultado);
-	}
-	
-	public void eliminarResultado (int idResultado) {
-		Resultado resultado=buscarResultadoPorId(idResultado);
-		if(resultado!=null) {
-			EntityTransaction tx=eManager.getTransaction();
-			tx.begin();
-			eManager.remove(resultado);
-			tx.commit();
-		}
+	public Resultado findByUrl (String url) {
+		String jpql="Select r from Resultado r where r.url=:url";
+		TypedQuery<Resultado> query= eManager.createQuery(jpql, Resultado.class);
+		query.setParameter("url", url);
+		return query.getResultList().stream()
+				.findFirst()
+				.orElse(null);
 		
 	}
 	
-	public List<Resultado> resultadosPorTematica(String tematica) {
+	
+	public  Resultado findById(int idResultado) {
+		return eManager.find(Resultado.class, idResultado);
+	}
+	
+	public void deleteById(int idResultado) {
+		eManager.remove(findById(idResultado));
+	}
+	
+	public List<Resultado> findByTematica(String tematica) {
 		String jpql="Select r From Resultado r where r.categoria=?1";
 		TypedQuery<Resultado> qr= eManager.createQuery(jpql,Resultado.class);
 		qr.setParameter(1, tematica);
 		List<Resultado> resultado=qr.getResultList();
 		return resultado;
 	}
+	
+	
 
 }

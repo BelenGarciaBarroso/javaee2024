@@ -26,15 +26,20 @@ public class FrontController extends HttpServlet {
 			}
 			case "doBuscar"->{
 				request.getRequestDispatcher("BuscarAction").include(request, response);
-				yield "productos.jsp";
+				yield "resultado.jsp";
+			}
+			case "doBuscarResultados"->{
+				request.getRequestDispatcher("BuscarResultadosAction").include(request, response);
+				yield "resultados.jsp";
 			}
 			case "toAlta"->"alta.html";
 			case "toBuscar"->"buscar.html";
 			case "toEliminar"->"eliminar.html";
+			case "toBuscarResultados"->"buscarResultados.html";
 			default ->"inicio.html";
 		};
 		//transferimos el control a la vista definitiva
-		request.getRequestDispatcher("inicio.html").forward(request, response);
+		request.getRequestDispatcher(urlVista).forward(request, response);
 	}
 
 }
