@@ -10,9 +10,9 @@ import jakarta.persistence.TypedQuery;
 import model.Resultado;
 
 public class BuscadorDao {
-	private EntityManager eManager;
+	private static EntityManager eManager;
 	
-	public BuscadorDao() {
+	static { // aquí se crea el Entity para que lo utilicen todos los métodos. Al ser static a secas se pasa por él una única vez.
 		EntityManagerFactory factory=Persistence.createEntityManagerFactory("buscador");
 		eManager=factory.createEntityManager();
 	}
