@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+    Nota: <input type="text" id="nota"><br>
+    <input type="button" value="Agregar" onclick="agregar();">
+
+    <br><br>
+    
+    <input type="button" value="Media" onclick="media()"><p id="media"></p>
+    <br><br>
+   
+    <input type="button" value="Aprovados" onclick="aprobados()"><p id="aprobados"></p>
+    <br><br>
+    
+    <input type="button" value="Ver todos" onclick="verTodos()"><p id="verTodos"></p>
+    <br><br>
+
+    <h1 id="res"></h1>
+
+    <script type="text/javascript">
+        var notas=[];
+        var media;
+        var aux=0;
+        var aprovados=[];
+
+
+        function agregar(nota) {
+            notas.push(parseInt(document.getElementById("nota").value));
+            resetear();
+    		
+        }
+
+        function media() {
+            for(let i=0;i<notas.length;i++) {
+                aux+=notas[i];
+		    }
+            media=aux/notas.length;
+            document.getElementById("media").innerHTML="<b>"+media+"</b>";
+        }
+
+        function aprobados() {
+            let ap=0;
+            for(let i=0;i<notas.length;i++) {
+                if (notas[i]>=5) {
+                    ap++;
+                }
+		    document.getElementById("aprovados").innerHTML=ap;
+		    
+            
+
+
+        }
+
+        function verTodos() {
+            for(let n of notas) {
+                document.getElementById("verTodos").innerHTML="<b>"+n+"</b>";
+		    }
+        }
+
+        function resetear(){
+    		document.getElementById("nota").value="";
+    		
+    	}
+    
+
+    </script>
+
+</body>
+</html>
