@@ -14,7 +14,11 @@
 
     <script>
         function negrita() {
-            var 
+        	var parrafos=document.getElementsByTagName("p");
+            
+            for(let p of parrafos){
+                p.style.fontWeight="Bold";
+            } 
         }
 
 

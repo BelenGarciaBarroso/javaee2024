@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<script type="text/javascript">
+		// crear array/lista
+		var data=[]; // Array vacío, es dinámico y se pueden añadir elementos en cualquier posición
+		var other=[5,6];
+		data[0]=25; // añadir elementos
+		data[3]=40;
+		other.push("hello");//añadir elementos
+		console.log(data.length);
+		console.log(other.length);
+		console.log(data[3]);
+		// recorrido del array/list
+		for(let n of other) {
+			console.log(n+"$");
+		}
+		
+		for(let i=0;i<other.length;i++) {
+			console.log(other[i]+"-");
+		}
+		
+		other.forEach(n=>console.log(n+"*"));
+		
+		other.forEach(function(n) {
+			console.log(n+"/");
+		});
+		
+		//Ordenación de array/list
+		data.sort(function(a,b){
+			return a-b;
+		});
+		console.log(data);
+		
+		other.sort(function(a,b){
+			return a-b;
+		});
+		console.log(other);
+		
+	</script>
+
+</body>
+</html>
