@@ -5,6 +5,77 @@
 <title>Insert title here</title>
 </head>
 <body>
+	<form  id="formulario"><br>">
+
+		Nombre: <input type="text" id="nombre"><br>
+		Categoria: <input type="text" id="categoria"><br>
+		Precio: <input type="text" id="precio"><br>
+		
+		<input type="button" value="Guardar" onclick="guardar();">
+		<br><br>
+		
+		<hr>
+		
+	    Bucar por Categoría <input type="text" id="buscar">
+	    <input type="button" value="Buscar por Categoría" onclick="buscarCategoria();">
+	
+	</form>
+	
+	<div id="tabla">
+	
+	</div>
+	
+	<script type="text/javascript">
+	
+	var listado =[];
+	function guardar() {
+		let nombre=document.getElementById("nombre").value;
+		let categoria=document.getElementById("categoria").value;
+		let precio=document.getElementById("precio").value;
+		
+		if(nombre.trim().length==0) {
+			alert("El nombre es obligatorio");
+			return false;
+		}
+		
+		if(categoria.trim().length==0) {
+			alert("La categoria es obligatorio");
+			return false;
+		}
+		
+		if(precio.trim().length==0||isNaN(precio)||(precio<0)) {
+			alert("El precio es obligatorio y debe ser mayor de 0");
+			return false;
+		}
+		
+		listado.push=({"nombre":nombre, "categoria":categoria, "precio":precio});
+		document.getElementById("formulario").reset();
+		
+		return true;
+	}
+	
+	function buscarCategoria(){
+		let buscarCategoria=document.getElementById("buscar").value;
+		var tabla="<table border='1'><tr><th>Nombre</th><th>Categoria</th><th>precio</th></tr>";
+		//if (listado!=null) {
+			for (let l of listado){
+				if(l.categoria==(document.getElementById("buscar").value)) {
+					 tabla+="<tr><td>"+l.nombre+"</td><td>"+l.categoria+"</td><td>"+l.precio+"</td><td>";
+				};
+			};
+			tabla+="</table>";
+			document.getElementById("tabla").innerHTML=tabla;
+		//}
+	}
+	
+	
+	
+	
+	
+	</script>
+	
+	
+	
 
 </body>
 </html>

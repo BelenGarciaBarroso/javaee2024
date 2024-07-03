@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script> 
+</head>
+<body>
+    <p>Párrafo 1</p>
+    <p>Párrafo 2</p>
+    <p>Párrafo 3</p>
+
+    <br>
+    <input type="button" value="Poner negrita" id="negrita">
+
+    <script type="text/javascript">
+    
+    	$("#negrita").click(function(){ // varias formas de hacerlo
+    		/* $("p").each(function(i,e) { // p es la etiqueta de arriba <p. i = indice, e=elemento
+    			e.style.fontWeight="Bold";
+    		}); */
+    		//$("p").each((i,e=>e.style.fontWeight="Bold"));
+    		/* $("p").each(function() {
+    			$(this).css("font-weight","Bold");    			
+    		}); */
+    		$("p").css("font-weight","Bold");  
+    	});
+        
+
+
+    </script>
+
+</body>
+</html>
