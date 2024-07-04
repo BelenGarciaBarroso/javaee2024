@@ -24,6 +24,7 @@
 		guardar();
 		
 		$("#filtrar").click(function() {
+		
 			
 			var tabla="<table border='1'><tr><th>Curso</th><th>Duración</th><th>Asignaturas</th></tr>";
 			for (let c of cursos) {
@@ -33,7 +34,7 @@
 				};
 			};
 			tabla+="</table>";
-			$("#tabla").html(cursos);
+			$("#cursos").html(tabla);
 			
 			
 		});
